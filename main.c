@@ -5,7 +5,7 @@ int main(){
 while(1) {
   int i;
   printf("/main \n");
-  printf("Wie moechten Sie fortfahren? \n");
+  printf("Willkommen. Wie moechten Sie fortfahren? \n");
   printf("(1) Alle Aufgaben anzeigen \n(2) Neue Aufgabe erstellen \n(3) Offene Aufgaben anzeigen \n(4) Aufgabe nach Bearbeiter suchen \n");
   scanf("%d",&i);
   printf("%d\n",i);
@@ -19,6 +19,8 @@ while(1) {
     break;
     case 2:
       printf("/main/neu_aufgaben \n");
+      title();
+
     break;
     case 3:
       printf("/main/offene \n");
