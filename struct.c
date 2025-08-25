@@ -3,6 +3,21 @@
 #include <string.h>
 
 TODO todos[100];
+//Aufgaben anyeigen
+void Tasks(){
+    FILE *fp = fopen("saves.txt", "r");
+if (fp == NULL) {
+    printf("Fehler bei lesen der Datei!\n");
+    return;
+
+}
+char line[300];//Max pro Zeile
+printf("Aufgaben: \n");
+while (fgets(line, sizeof(line), fp)) {
+    printf("%s", line);
+}
+fclose(fp);
+ }
 
 
 

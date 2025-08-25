@@ -14,6 +14,7 @@ while(1) {
   switch(i) {
     case 1:
       printf("/main/alle_aufgaben \n");
+    Tasks();
       printf("<-- back");
       scanf("%d",&i);
     break;
