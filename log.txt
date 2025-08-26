@@ -1,0 +1,4 @@
+[26/08/2025 | 14:13:26] [0] [test***das ist ein test]
+[26/08/2025 | 14:14:09] [0] [test2***noch ein test]
+AUFGABE ERSTELLT: [26/08/2025 | 14:15:08] [0] [test3 || dritter test]
+[26/08/2025 | 14:15:59] AUFGABE ERSTELLT: (0) [test4 || das ist der vierte test]

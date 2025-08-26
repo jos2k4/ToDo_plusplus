@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include "struct.h"
 #include <string.h>
+#include "date_time.h"
 
 TODO todos[100];
-//Aufgaben anyeigen
+//Aufgaben anzeigen
 void Tasks(){
     FILE *fp = fopen("saves.txt", "r");
 if (fp == NULL) {
@@ -18,6 +19,7 @@ while (fgets(line, sizeof(line), fp)) {
 }
 fclose(fp);
  }
+
 
 static void read_line(const char *promt, char *buf, size_t n) {
     if (promt) printf("%s",promt);
@@ -37,6 +39,9 @@ FILE *f = fopen("saves.txt", "a");
         printf("Fehler");
         return;
     }
+
+FILE *l = fopen("log.txt", "a");
+    if (!l) {perror("log.txt"); fclose(f); return;}
 
 
     for (int i = 0; i < 100; i++) {
@@ -61,7 +66,16 @@ FILE *f = fopen("saves.txt", "a");
         printf("(%d) %s \n ---------- \n Beschreibung: %s \n",i, todos[i].header, todos[i].description);
         //Backup in Datei
         fprintf(f,"(%d) Titel: %s \n Beschreibung: %s \n",i, todos[i].header, todos[i].description);
+
         fflush(f);
+
+
+
+
+        fprintf(l,"[%s] AUFGABE ERSTELLT: (%d) [%s || %s]\n",currentTime(), i, todos[i].header, todos[i].description);
+
+        fflush(l);
+
 
         //Fortfahren?
         char line[16];
@@ -72,6 +86,7 @@ FILE *f = fopen("saves.txt", "a");
 
     }
     fclose(f);
+    fclose(l);
 }
 
 void description() {
