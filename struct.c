@@ -19,35 +19,59 @@ while (fgets(line, sizeof(line), fp)) {
 fclose(fp);
  }
 
+static void read_line(const char *promt, char *buf, size_t n) {
+    if (promt) printf("%s",promt);
+    if (!fgets(buf,n,stdin)) {
+        buf[0] = '\0';
+        return;
+    }
+    buf[strcspn(buf,"\n")] = '\0';
+}
+
 
 
 //input title
 void title() {
+FILE *f = fopen("saves.txt", "a");
+    if (f == NULL) {
+        printf("Fehler");
+        return;
+    }
+
+
     for (int i = 0; i < 100; i++) {
         char name[20];
-        printf("Titel eingeben:");
-        scanf("%s", name);
-        fgets(name, sizeof(name), stdin);
-        strcpy(todos[i].header, name);
         char description[500];
-        printf("Beschreibung hinzufuegen:\n");
-        scanf("%s", description);
-        fgets(description, sizeof(description) ,stdin);
-        strcpy(todos[i].description, description);
 
-for (int j = 0; description[j] != '\0'; j++) {
-    if (description[j] == '\n' || description[j] == ' ')description[j] = '_';
-}
+        read_line("Titel eingeben: ", name, sizeof(name));
+        if (name[0] == '\0')break;
+
+        read_line("Description: ", description, sizeof(description));
+        if (description[0] == '\0')break;
+
+
+        //kopieren der Eingabe in struct
+        strncpy(todos[i].header, name , sizeof(todos[i].header));
+        todos[i].header[sizeof(todos[i].header) -1] = '\0';
+
+        strncpy(todos[i].description, description, sizeof(todos[i].description));
+        todos[i].description[sizeof(todos[i].description) -1] = '\0';
+
 
         printf("(%d) %s \n ---------- \n Beschreibung: %s \n",i, todos[i].header, todos[i].description);
-        int a;
-        printf("Fortfahren?\n");
-        scanf("%d", &a);
+        //Backup in Datei
+        fprintf(f,"(%d) Titel: %s \n Beschreibung: %s \n",i, todos[i].header, todos[i].description);
+        fflush(f);
+
+        //Fortfahren?
+        char line[16];
+        read_line("Fortfahren ? (1 = ja / 0 = nein): " ,line, sizeof(line));
+        if (line[0] == '0')break;
 
         //printf("Debugging: %s", todos[2].header);
 
-
     }
+    fclose(f);
 }
 
 void description() {
