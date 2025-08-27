@@ -9,6 +9,9 @@ char description[500];
 int status; //0 = open, 1= finisched
 }TODO;
 
+TODO todos[100];
+
+
 
 
 
