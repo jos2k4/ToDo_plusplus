@@ -123,6 +123,6 @@ void cleanupTask()
     }
     fclose(f);
     fclose(temp);
-    remove("saves.txt");
+    remove("saves.txt");            //alte Datei loeschen
     rename("temp.txt", "saves.txt");
 }
