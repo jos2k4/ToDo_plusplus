@@ -19,3 +19,8 @@
 [27/08/2025 | 18:24:02] AUFGABE ERSTELLT: (0) [hallo || hallo]
 [27/08/2025 | 18:24:06] AUFGABE ERSTELLT: (1) [ciao || ciao]
 [27/08/2025 | 18:24:11] AUFGABE ERSTELLT: (2) [eins || zwei]
+[27/08/2025 | 21:41:25] AUFGABE ERSTELLT: (0) [marian || ist cool]
+[27/08/2025 | 21:41:48] AUFGABE ERSTELLT: (1) [dfsdf || sdfsdfsfsew]
+[27/08/2025 | 21:41:54] AUFGABE ERSTELLT: (2) [sfesfs || sfesf]
+[27/08/2025 | 21:44:00] AUFGABE ERSTELLT: (0) [fffffffffffffffffffffffffffffffffffffffffffffffff || fffffffffffffffffffffffffffff]
+[27/08/2025 | 21:44:21] AUFGABE ERSTELLT: (1) [c || c]

@@ -12,11 +12,4 @@ int status; //0 = open, 1= finisched
 TODO todos[100];
 
 
-
-
-
-
-
-
-
 #endif
