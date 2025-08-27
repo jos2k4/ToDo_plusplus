@@ -2,7 +2,7 @@
 #define STRUCT_C
 
 typedef struct TODO{
-char header[20];
+char header[50];
 char description[500];
 //char editor[15];      //later
 //int duration;         //later

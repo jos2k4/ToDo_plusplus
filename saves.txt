@@ -1,8 +1,6 @@
-(0) Titel: test 
- Beschreibung: das ist ein test 
-(0) Titel: test2 
- Beschreibung: noch ein test 
-(0) Titel: test3 
- Beschreibung: dritter test 
-(0) Titel: test4 
- Beschreibung: das ist der vierte test 
+(0) Titel: test || Beschreibung: das ist ein test
+(0) Titel: hallo || Beschreibung: das ist ein neuer test 
+(0) Titel: testtest || Beschreibung: hallo das ist ein test 
+(0) Titel: github pus || Beschreibung: Bitte die aktuellen Ergebnisse immer auf Github pushen, damit nix verloren geht 
+(0) Titel: Ergebnisse auf Github pushen || Beschreibung: Bitte alle aktuellen Ergebnisse auf Github pushen, damit nix verloren geht. 
+(0) Titel: hallo || Beschreibung: uashdfoiahoduhawoudhawoidhawuodhawoudhaofhaowf 

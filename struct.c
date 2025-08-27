@@ -4,8 +4,19 @@
 #include "date_time.h"
 
 TODO todos[100];
+
+//definition of read_linw
+static void read_line(const char *promt, char *buf, size_t n) {
+    if (promt) printf("%s",promt);
+    if (!fgets(buf,n,stdin)) {
+        buf[0] = '\0';
+        return;
+    }
+    buf[strcspn(buf,"\n")] = '\0';
+}
+
 //Aufgaben anzeigen
-void Tasks(){
+void showAssignments(){
     FILE *fp = fopen("saves.txt", "r");
 if (fp == NULL) {
     printf("Fehler bei lesen der Datei!\n");
@@ -21,19 +32,11 @@ fclose(fp);
  }
 
 
-static void read_line(const char *promt, char *buf, size_t n) {
-    if (promt) printf("%s",promt);
-    if (!fgets(buf,n,stdin)) {
-        buf[0] = '\0';
-        return;
-    }
-    buf[strcspn(buf,"\n")] = '\0';
-}
 
 
 
-//input title
-void title() {
+//create a assignment
+void newAssignment() {
 FILE *f = fopen("saves.txt", "a");
     if (f == NULL) {
         printf("Fehler");
@@ -45,7 +48,7 @@ FILE *l = fopen("log.txt", "a");
 
 
     for (int i = 0; i < 100; i++) {
-        char name[20];
+        char name[50];
         char description[500];
 
         read_line("Titel eingeben: ", name, sizeof(name));
@@ -63,9 +66,9 @@ FILE *l = fopen("log.txt", "a");
         todos[i].description[sizeof(todos[i].description) -1] = '\0';
 
 
-        printf("(%d) %s \n ---------- \n Beschreibung: %s \n",i, todos[i].header, todos[i].description);
+        printf("(%d) Titel: %s || Beschreibung: %s \n",i, todos[i].header, todos[i].description);
         //Backup in Datei
-        fprintf(f,"(%d) Titel: %s \n Beschreibung: %s \n",i, todos[i].header, todos[i].description);
+        fprintf(f,"(%d) Titel: %s || Beschreibung: %s \n",i, todos[i].header, todos[i].description);
 
         fflush(f);
 

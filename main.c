@@ -2,6 +2,7 @@
 #include "date_time.c"
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 int main(){
 for (;;) {
@@ -9,7 +10,7 @@ for (;;) {
   char line[64];
   printf("/main \n");
   printf("Willkommen. Wie moechten Sie fortfahren? \n");
-  printf("(1) Alle Aufgaben anzeigen \n(2) Neue Aufgabe erstellen \n(3) Offene Aufgaben anzeigen \n(4) Aufgabe nach Bearbeiter suchen \n");
+  printf("(1) Alle Aufgaben anzeigen \n(2) Neue Aufgabe erstellen \n(3) Offene Aufgaben anzeigen \n(4) Aufgabe nach Bearbeiter suchen \n(5) Programm beenden \n");
 
   read_line("Auswahl: ", line, sizeof(line));
   i = (int) strtol(line, NULL, 10);
@@ -18,13 +19,13 @@ for (;;) {
   switch(i) {
     case 1:
       printf("/main/alle_aufgaben \n");
-    Tasks();
-      printf("<-- back");
-      scanf("%d",&i);
+      showAssignments();
+      //printf("<-- back");
+      //scanf("%d",&i);
     break;
     case 2:
       printf("/main/neu_aufgaben \n");
-      title();
+      newAssignment();
 
     break;
     case 3:
@@ -33,6 +34,10 @@ for (;;) {
     case 4:
       printf("/main/bearbeiter \n");
     break;
+    case 5:
+      printf("Auf Wiedersehen!");
+      return 0;
+      break;
 
 
     default:
