@@ -1,19 +1,25 @@
 #include "struct.c"
+#include "date_time.c"
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(){
-while(1) {
-  int i;
+for (;;) {
+  int i = -1;
+  char line[64];
   printf("/main \n");
   printf("Willkommen. Wie moechten Sie fortfahren? \n");
   printf("(1) Alle Aufgaben anzeigen \n(2) Neue Aufgabe erstellen \n(3) Offene Aufgaben anzeigen \n(4) Aufgabe nach Bearbeiter suchen \n");
-  scanf("%d",&i);
-  printf("%d\n",i);
+
+  read_line("Auswahl: ", line, sizeof(line));
+  i = (int) strtol(line, NULL, 10);
 
 
   switch(i) {
     case 1:
       printf("/main/alle_aufgaben \n");
+    cleanupTask();
+    Tasks();
       printf("<-- back");
       scanf("%d",&i);
     break;
