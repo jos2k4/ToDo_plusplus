@@ -2,11 +2,11 @@
 #define STRUCT_C
 
 typedef struct TODO{
-char header[50];
-char description[500];
+char header[50];    //working
+char description[500];  //working
 //char editor[15];      //later
 //int duration;         //later
-int status; //0 = open, 1= finisched
+int status; //0 = open, 1= finisched //in progress
 }TODO;
 
 TODO todos[100];

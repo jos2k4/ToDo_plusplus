@@ -31,8 +31,6 @@ void newAssignment() {
         strncpy(todos[i].description, description, sizeof(todos[i].description));
         todos[i].description[sizeof(todos[i].description) -1] = '\0';
 
-
-
         printf("(%d) Titel: %s || Beschreibung: %s \n",i, todos[i].header, todos[i].description);
         //Backup in Datei
         fprintf(f,"(%d) Titel: %s || Beschreibung: %s \n",i, todos[i].header, todos[i].description);
