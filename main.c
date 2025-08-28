@@ -13,39 +13,39 @@ for (;;) {
   printf(todos[1].header);
   printf(todos[2].header); */
   printf("/main \n");
-  printf("Willkommen. Wie moechten Sie fortfahren? \n");
-  printf("(1) Alle Aufgaben anzeigen \n(2) Neue Aufgabe erstellen \n(3) Offene Aufgaben anzeigen \n(4) Aufgabe nach Bearbeiter suchen \n(5) Programm beenden \n");
+  printf("Welcome. How do you want to continue? \n");
+  printf("(1) List all Assignments \n(2) Create a new Assignment \n(3) List all open Assignments \n(4) still in development \n(5) exit program \n");
 
-  read_line("Auswahl: ", line, sizeof(line));
+  read_line("Your choice: ", line, sizeof(line));
   i = (int) strtol(line, NULL, 10);
 
 
   switch(i) {
     case 1:
-      printf("/main/alle_aufgaben \n");
+      printf("/main/all_assignments \n");
       showAssignments();
       //printf("<-- back");
       //scanf("%d",&i);
     break;
     case 2:
-      printf("/main/neu_aufgaben \n");
+      printf("/main/new_assignment \n");
       newAssignment();
 
     break;
     case 3:
-      printf("/main/offene \n");
+      printf("/main/open_assignments \n");
     break;
     case 4:
-      printf("/main/bearbeiter \n");
+      printf("/main/dev \n");
     break;
     case 5:
-      printf("Auf Wiedersehen!");
+      printf("See you!");
       return 0;
       break;
 
 
     default:
-      printf("Fehler");
+      printf("ERROR");
   }
 
 

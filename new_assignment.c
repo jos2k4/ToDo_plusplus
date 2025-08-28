@@ -49,7 +49,7 @@ void newAssignment() {
         char name[50];
         char description[500];
 
-        read_line("Titel eingeben: ", name, sizeof(name));
+        read_line("header: ", name, sizeof(name));
         if (name[0] == '\0')break;
 
         read_line("Description: ", description, sizeof(description));
@@ -67,16 +67,16 @@ void newAssignment() {
 
         todos[i].id = next_id++;
 
-        printf("id = %d (%d) Titel: %s || Beschreibung: %s \n",todos[i].id, i, todos[i].header, todos[i].description);
+        printf("id = %d (%d) Header: %s || Description: %s \n",todos[i].id, i, todos[i].header, todos[i].description);
         //Backup in Datei
-        fprintf(f,"|%d| (%d) Titel: %s || Beschreibung: %s \n",todos[i].id, i, todos[i].header, todos[i].description);
+        fprintf(f,"|%d| (%d) Header: %s || Description: %s \n",todos[i].id, i, todos[i].header, todos[i].description);
 
         fflush(f);
 
 
 
 
-        fprintf(l,"[%s] AUFGABE ERSTELLT: id = %d (%d) [%s || %s]\n",currentTime(),todos[i].id, i, todos[i].header, todos[i].description);
+        fprintf(l,"[%s] ASSIGNMENT CREATED: id = %d (%d) [%s || %s]\n",currentTime(),todos[i].id, i, todos[i].header, todos[i].description);
 
         fflush(l);
         i = todos[i].id;
@@ -84,7 +84,7 @@ void newAssignment() {
 
         //Fortfahren?
         char line[16];
-        read_line("Fortfahren ? (1 = ja / 0 = nein): " ,line, sizeof(line));
+        read_line("Continue ? (1 = yes / 0 = no): " ,line, sizeof(line));
         if (line[0] == '0')break;
 
         //printf("Debugging: %s", todos[2].header);

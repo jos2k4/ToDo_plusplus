@@ -18,12 +18,12 @@ void showAssignments(){
 
     FILE *fp = fopen("saves.txt", "r");
     if (fp == NULL) {
-        printf("Fehler bei lesen der Datei!\n");
+        printf("Error reading file saves.txt!\n");
         return;
     }
 
 char line[300];//Max pro Zeile
-printf("Aufgaben: \n");
+printf("All Assignments: \n");
 while (fgets(line, sizeof(line), fp)) {
     printf("%s", line);
 }
