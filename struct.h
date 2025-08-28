@@ -1,5 +1,6 @@
 #ifndef STRUCT_C
 #define STRUCT_C
+//
 
 typedef struct TODO{
     int id;
