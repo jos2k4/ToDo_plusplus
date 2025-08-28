@@ -1,7 +1,39 @@
+#include <stdlib.h>
+#include <string.h>
 #include "struct.h"
+
+static long read_max_id_from_file(const char *path) {
+    long max_id = -1;
+    FILE *file = fopen(path, "r");
+    if (!file) return -1;
+
+    char line[1024];
+    while (fgets(line, sizeof(line), file)) {
+
+        char *p = strchr(line, '|');
+        if (!p) continue;
+        char *q = strchr(p + 1, '|');
+        if (!q) continue;
+
+        char saved = *q;
+        *q = '\0';
+        char *endptr = NULL;
+        long id = strtol(p + 1, &endptr, 10);
+        *q = saved;
+
+        if (endptr == q && id > max_id) max_id = id;
+    }
+    fclose(file);
+    return max_id;
+}
 
 //create a assignment
 void newAssignment() {
+
+    const char *path = "saves.txt";
+    static int next_id = -1;
+
+    if (next_id < 0) next_id = (int)read_max_id_from_file(path) +1;
 
     FILE *f = fopen("saves.txt", "a");
     if (f == NULL) {
@@ -31,18 +63,23 @@ void newAssignment() {
         strncpy(todos[i].description, description, sizeof(todos[i].description));
         todos[i].description[sizeof(todos[i].description) -1] = '\0';
 
-        printf("(%d) Titel: %s || Beschreibung: %s \n",i, todos[i].header, todos[i].description);
+        todos[i].status = 0;
+
+        todos[i].id = next_id++;
+
+        printf("id = %d (%d) Titel: %s || Beschreibung: %s \n",todos[i].id, i, todos[i].header, todos[i].description);
         //Backup in Datei
-        fprintf(f,"(%d) Titel: %s || Beschreibung: %s \n",i, todos[i].header, todos[i].description);
+        fprintf(f,"|%d| (%d) Titel: %s || Beschreibung: %s \n",todos[i].id, i, todos[i].header, todos[i].description);
 
         fflush(f);
 
 
 
 
-        fprintf(l,"[%s] AUFGABE ERSTELLT: (%d) [%s || %s]\n",currentTime(), i, todos[i].header, todos[i].description);
+        fprintf(l,"[%s] AUFGABE ERSTELLT: id = %d (%d) [%s || %s]\n",currentTime(),todos[i].id, i, todos[i].header, todos[i].description);
 
         fflush(l);
+        i = todos[i].id;
 
 
         //Fortfahren?

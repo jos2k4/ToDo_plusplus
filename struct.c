@@ -29,13 +29,3 @@ while (fgets(line, sizeof(line), fp)) {
 }
 fclose(fp);
  }
-
-
-
-
-
-
-
-void description() {
-
-}
