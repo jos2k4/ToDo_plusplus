@@ -26,7 +26,7 @@ static long read_max_id_from_file(const char *path) {
     fclose(file);
     return max_id;
 }
-
+//
 
 //create a assignment
 void newAssignment() {
