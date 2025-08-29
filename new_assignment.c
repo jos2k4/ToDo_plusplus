@@ -55,6 +55,10 @@ void newAssignment() {
         read_line("Description: ", description, sizeof(description));
         if (description[0] == '\0')break;
 
+        char deadline[20];
+        read_line("Deadline (DD-MM-YYYY HH:MM): ", deadline, sizeof(deadline));
+        if (deadline[0] == '\0') break;
+
 
         //kopieren der Eingabe in struct
         strncpy(todos[i].header, name , sizeof(todos[i].header));
@@ -63,20 +67,23 @@ void newAssignment() {
         strncpy(todos[i].description, description, sizeof(todos[i].description));
         todos[i].description[sizeof(todos[i].description) -1] = '\0';
 
+        strncpy(todos[i].deadline, deadline, sizeof(todos[i].deadline));
+        todos[i].deadline[sizeof(todos[i].deadline)-1] = '\0';
+
         todos[i].status = 0;
 
         todos[i].id = next_id++;
 
-        printf("id = %d (%d) Header: %s || Description: %s \n",todos[i].id, i, todos[i].header, todos[i].description);
+        printf("id = %d (%d) Header: %s || Description: %s || Deadline: %s \n",todos[i].id, i, todos[i].header, todos[i].description, todos[i].deadline);
         //Backup in Datei
-        fprintf(f,"|%d| (%d) Header: %s || Description: %s \n",todos[i].id, i, todos[i].header, todos[i].description);
+        fprintf(f,"|%d| (%d) Header: %s || Description: %s || Deadline: %s \n",todos[i].id, i, todos[i].header, todos[i].description, todos[i].deadline);
 
         fflush(f);
 
 
 
 
-        fprintf(l,"[%s] ASSIGNMENT CREATED: id = %d (%d) [%s || %s]\n",currentTime(),todos[i].id, i, todos[i].header, todos[i].description);
+        fprintf(l,"[%s] ASSIGNMENT CREATED: id = %d (%d) [%s || %s || %s ]\n",currentTime(),todos[i].id, i, todos[i].header, todos[i].description, todos[i].deadline);
 
         fflush(l);
         i = todos[i].id;
