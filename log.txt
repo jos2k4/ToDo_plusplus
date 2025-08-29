@@ -46,3 +46,7 @@
 [29/08/2025 | 14:48:08] ASSIGNMENT CREATED: id = 1 (1) [sefes || sefse]
 [29/08/2025 | 14:48:12] ASSIGNMENT CREATED: id = 2 (2) [sefes || sefse]
 [29/08/2025 | 14:48:17] ASSIGNMENT CREATED: id = 3 (3) [sefes || sefse]
+[29/08/2025 | 15:36:48] ASSIGNMENT CREATED: id = 4 (4) [hallo || hallo || 03.03.2030 ]
+[29/08/2025 | 15:42:42] ASSIGNMENT CREATED: id = 5 (0) [hello || world || 01.03.2030 ]
+[29/08/2025 | 15:42:59] ASSIGNMENT CREATED: id = 6 (1) [test2 || test2 || 02.02.2090 ]
+[29/08/2025 | 15:43:51] ASSIGNMENT CREATED: id = 5 (5) [test || test || 02.02.2030 ]

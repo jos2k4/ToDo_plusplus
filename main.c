@@ -7,11 +7,11 @@
 //
 int main(){
 for (;;) {
+
+
   int i = -1;
   char line[64];
-  /*printf(todos[0].header);    DEBUGGING
-  printf(todos[1].header);
-  printf(todos[2].header); */
+  printf(todos[4].header);
   printf("/main \n");
   printf("Welcome. How do you want to continue? \n");
   printf("(1) List all Assignments \n(2) Create a new Assignment \n(3) List all open Assignments \n(4) still in development \n(5) exit program \n");

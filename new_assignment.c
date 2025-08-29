@@ -27,6 +27,7 @@ static long read_max_id_from_file(const char *path) {
     return max_id;
 }
 
+
 //create a assignment
 void newAssignment() {
 
@@ -45,7 +46,7 @@ void newAssignment() {
     if (!l) {perror("log.txt"); fclose(f); return;}
 
 
-    for (int i = read_max_id_from_file("saves.txt") + 1; i < read_max_id_from_file("saves.txt") + 2; i++) {
+    for (int i = read_max_id_from_file("saves.txt") + 1 ; i < read_max_id_from_file("saves.txt") + 2; i++) {
         char name[50];
         char description[500];
 
