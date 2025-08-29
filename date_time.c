@@ -15,11 +15,13 @@ strftime(buf, sizeof(buf), "%d/%m/%Y | %H:%M:%S", t);
   return buf;
 
 }
+//Read deadline from file
 int PastDeadline(const char *deadline)
 {
   int d, m, y, H, M;
   if (sscanf(deadline, "%d.%d.%d %d:%d", &d, &m, &y, &H, &M) == 5 || sscanf(deadline, "%d-%d-%d %d:%d", &d, &m, &y, &H, &M) == 5) {
     }
+    //Possibility without time
   else if(sscanf(deadline, "%d.%d.%d" , &d, &m, &y) == 3 || sscanf(deadline,"%d-%d-%d" , &d, &m, &y) == 3){
     H=0;
     M=0;
