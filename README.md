@@ -1,4 +1,4 @@
-# ToDo++ is a simple todo program. The Reason why we develope this is to strengthen our skills in C so don't judge us too hard :)
+# ToDo++ — a C-based todo program built as a learning project to improve our programming skills.
 
 Watch our progress so far:
 
