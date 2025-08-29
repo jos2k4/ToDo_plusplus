@@ -1,7 +1,18 @@
-# ToDo++ is a simple todo program. The Reason why we develope this is to strengthen our skills in C so don't judge us too hard :)
+# ToDo++ — a C-based todo program built as a learning project to improve our programming skills.
 
 Watch our progress so far:
 
-![ToDo++_soFar](https://github.com/user-attachments/assets/d2735428-431c-4a88-8d2a-78fd1aa18f7e)
+![ToDo++Snippet](https://github.com/user-attachments/assets/506fae85-f4c7-4694-8dfa-f262601f8d23)
 
-(There is coming so much more in the future but this is our first (working) version)
+
+## Features (so far):
+- You can create a task each task receives it's own id
+- List all assignments wth it's id
+
+## In Developement:
+- set the status of a task to open or closed (with it's individual id)
+- choose a editor for each task (maybe with email notification)
+
+---
+
+💡 Feedback and suggestions for improvements are always welcome!

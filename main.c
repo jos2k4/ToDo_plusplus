@@ -24,6 +24,7 @@ for (;;) {
     case 1:
       printf("/main/all_assignments \n");
       showAssignments();
+      cleanupAssignments();
       //printf("<-- back");
       //scanf("%d",&i);
     break;
