@@ -30,6 +30,7 @@ while (fgets(line, sizeof(line), fp)) {
 }
 fclose(fp);
  }
+ //Deletion of expired assignments
 void cleanupAssignments()
 {
     FILE *f = fopen("saves.txt", "r");
@@ -51,6 +52,6 @@ void cleanupAssignments()
     }
     fclose(f);
     fclose(temp);
-    remove("saves.txt");            //alte Datei loeschen
+    remove("saves.txt");            //delete old file and rename new
     rename("temp.txt", "saves.txt");
 }
