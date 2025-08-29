@@ -45,7 +45,7 @@ void newAssignment() {
     if (!l) {perror("log.txt"); fclose(f); return;}
 
 
-    for (int i = 0; i < 100; i++) {
+    for (int i = read_max_id_from_file("saves.txt") + 1; i < read_max_id_from_file("saves.txt") + 2; i++) {
         char name[50];
         char description[500];
 
@@ -79,7 +79,7 @@ void newAssignment() {
         fprintf(l,"[%s] ASSIGNMENT CREATED: id = %d (%d) [%s || %s]\n",currentTime(),todos[i].id, i, todos[i].header, todos[i].description);
 
         fflush(l);
-        i = todos[i].id;
+        //i = todos[i].id;
 
 
         //Fortfahren?
