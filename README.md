@@ -6,12 +6,12 @@ Watch our progress so far:
 
 
 ## Progress so far:
--You can create a task each task receives it's own id
--List all assignments wth it's id
+- You can create a task each task receives it's own id
+- List all assignments wth it's id
 
 ## In developement:
--set the status of a task to open or closed (with it's individual id)
--choose a editor for each task (maybe with email notification)
+- set the status of a task to open or closed (with it's individual id)
+- choose a editor for each task (maybe with email notification)
 
 ---
 
