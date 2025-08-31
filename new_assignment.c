@@ -2,6 +2,28 @@
 #include <string.h>
 #include "struct.h"
 
+void loadTasks() {
+    FILE *f = fopen("saves.txt", "r");
+    if (!f) return;
+    char line[1024];
+    while (fgets(line, sizeof(line), f)) {
+        int id, idx;
+        char header[50], description[500], deadline[20] = "";
+
+        int n = sscanf(line,"|%d| (%d) Header: %49[^|] || Description: %499[^|] || Deadline: %19[^\n] ", &id, &idx, header, description, deadline);
+
+        if (n >= 4 && idx >= 0 && idx < 100) {
+            todos[idx].id = id;
+            strncpy(todos[idx].header, header, sizeof(todos[idx].header) -1 );
+            strncpy(todos[idx].description, description, sizeof(todos[idx].description) -1 );
+
+            if (n == 5) strncpy(todos[idx].deadline, deadline, sizeof(todos[idx].deadline) -1 );
+            todos[idx].status = 0;
+        }
+    }
+    fclose(f);
+}
+
 static long read_max_id_from_file(const char *path) {
     long max_id = -1;
     FILE *file = fopen(path, "r");
@@ -26,7 +48,15 @@ static long read_max_id_from_file(const char *path) {
     fclose(file);
     return max_id;
 }
-//
+
+int find_by_id(int id) {
+    for (int i = 0; i < 100; i++) {
+        if (todos[i].id == id) {
+            return i;
+        }
+    }
+    return -1;
+}
 
 //create a assignment
 void newAssignment() {
@@ -46,7 +76,7 @@ void newAssignment() {
     if (!l) {perror("log.txt"); fclose(f); return;}
 
 
-    for (int i = read_max_id_from_file("saves.txt") + 1 ; i < read_max_id_from_file("saves.txt") + 2; i++) {
+    for (int i =  0 ; i < 100; i++) {
         char name[50];
         char description[500];
 
