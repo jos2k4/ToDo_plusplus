@@ -30,28 +30,51 @@ while (fgets(line, sizeof(line), fp)) {
 }
 fclose(fp);
  }
- //Deletion of expired assignments
+ //split assignments
 void cleanupAssignments()
 {
     FILE *f = fopen("saves.txt", "r");
-    if (!f) return;
-    FILE *temp = fopen("temp.txt", "w");
-    if (!temp) {fclose(f); return;}
+    if (!f) { printf("Error reading file!\n");return;}
+    FILE *fopen_out = fopen("open.txt", "w");
+    //past deadline = closed.txt
+    FILE *fclosed_out = fopen ("closed.txt", "w");
+    if (!fopen_out || !fclosed_out) {
+      printf("Error creating file!\n");
+      if (fopen_out) fclose(fopen_out);
+      if (fclosed_out) fclose(fclosed_out);
+      fclose(f);
+      return;
+    }
 
-    char header[200], description[500], deadline[50];
-    int id;
-    while (fscanf(f, "|%*d| (%d) Header: %[^|] || Description: %[^|] || Deadline: %[^\n]\n", &id , header, description, deadline) == 4)
+   char line[2000];
+    while (fgets(line, sizeof(line), f))
     {
-        if (!PastDeadline(deadline))
+        int id_left = 0, idx = 0;
+        char header[200],description[500], deadline[50];
+        if (line[0] == '\n' || line[0] == '\r')
         {
-            fprintf(temp,"|%d| (%d) Header: %s || Description: %s || Deadline: %s\n", id, id, header, description, deadline);
-        }else
-        {
-            printf("Aufgabe \"%s\" geloescht. Deadline wurde ueberschritten)\n" , header);
+            continue;
         }
+
+        int got = sscanf(line,
+        "|%d| (%d) Header: %199[^|] || Description: %499[^|] || Deadline: %49[^\r\n]", &id_left , &idx, header, description, deadline);
+        if (got !=5)
+        {
+            continue;
+        }
+
+
+            if (!PastDeadline(deadline))
+            {
+                fprintf(fopen_out,"|%d| (%d) Header: %s || Description: %s || Deadline: %s\n", id_left, idx, header, description, deadline);
+            }else
+            {
+                fprintf(fclosed_out, "|%d| (%d) Header: %s || Description: %s || Deadline: %s\n", id_left, idx, header, description, deadline);
+            }
+
     }
     fclose(f);
-    fclose(temp);
-    remove("saves.txt");            //delete old file and rename new
-    rename("temp.txt", "saves.txt");
+    fclose(fopen_out);
+    fclose(fclosed_out);
+   printf("Open entries saved in \"open.txt\", expiered ones in \"closed.txt\". \n");
 }
