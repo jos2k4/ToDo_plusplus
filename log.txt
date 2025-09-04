@@ -52,3 +52,7 @@
 [29/08/2025 | 15:43:51] ASSIGNMENT CREATED: id = 5 (5) [test || test || 02.02.2030 ]
 [31/08/2025 | 16:03:40] ASSIGNMENT CREATED: id = 0 (0) [hello || world || 11.11.2030 ]
 [31/08/2025 | 16:04:01] ASSIGNMENT CREATED: id = 1 (1) [two || two || 12.12.2030 ]
+[04/09/2025 | 15:56:41] ASSIGNMENT CREATED: id = 2 (0) [valid1 || valid1 || 22.02.2026 ]
+[04/09/2025 | 15:57:12] ASSIGNMENT CREATED: id = 3 (1) [valid2 || valid2 || 23.04.2030 23:00 ]
+[04/09/2025 | 15:57:47] ASSIGNMENT CREATED: id = 4 (2) [expired1 || expired1 || 02.02.2006 ]
+[04/09/2025 | 15:58:09] ASSIGNMENT CREATED: id = 5 (3) [expired2 || expired2 || 02.02.2008 12:00 ]
