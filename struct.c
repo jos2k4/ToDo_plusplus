@@ -1,80 +1,75 @@
-#include <stdio.h>
 #include "struct.h"
+#include <stdio.h>
 #include <string.h>
-#include "date_time.h"
+#include <stdlib.h>
 
-
-//definition of read_linw
-static void read_line(const char *promt, char *buf, size_t n) {
-    if (promt) printf("%s",promt);
-    if (!fgets(buf,n,stdin)) {
-        buf[0] = '\0';
-        return;
-    }
-    buf[strcspn(buf,"\n")] = '\0';
-}
-
-//Aufgaben anzeigen
-void showAssignments(){
-
-    FILE *fp = fopen("saves.txt", "r");
-    if (fp == NULL) {
-        printf("Error reading file saves.txt!\n");
-        return;
-    }
-
-char line[300];//Max pro Zeile
-printf("All Assignments: \n");
-while (fgets(line, sizeof(line), fp)) {
-    printf("%s", line);
-}
-fclose(fp);
- }
- //split assignments
-void cleanupAssignments()
+int readTODOS()
 {
-    FILE *f = fopen("saves.txt", "r");
-    if (!f) { printf("Error reading file!\n");return;}
-    FILE *fopen_out = fopen("open.txt", "w");
-    //past deadline = closed.txt
-    FILE *fclosed_out = fopen ("closed.txt", "w");
-    if (!fopen_out || !fclosed_out) {
-      printf("Error creating file!\n");
-      if (fopen_out) fclose(fopen_out);
-      if (fclosed_out) fclose(fclosed_out);
-      fclose(f);
-      return;
-    }
+    FILE *saves = fopen("../saves.txt", "r");
+    if (saves == NULL)perror("Problems opening saves.txt in struct.c/readTODOS please contact devs");
 
-   char line[2000];
-    while (fgets(line, sizeof(line), f))
+    int i = 0;
+    char temp_header[100];
+    char temp_description[100];
+    int temp_id;
+    while (i <  100 && fscanf(saves, "%s %s %d", temp_header, temp_description, &temp_id ) == 3)
     {
-        int id_left = 0, idx = 0;
-        char header[200],description[500], deadline[50];
-        if (line[0] == '\n' || line[0] == '\r')
+        todos[i].header = malloc(strlen(temp_header)+1);
+        strcpy(todos[i].header, temp_header);
+
+        for (int j = 0; j< strlen(temp_description); j++)
         {
-            continue;
+            if (temp_description[j] == '-')temp_description[j] = ' ';
         }
 
-        int got = sscanf(line,
-        "|%d| (%d) Header: %199[^|] || Description: %499[^|] || Deadline: %49[^\r\n]", &id_left , &idx, header, description, deadline);
-        if (got !=5)
-        {
-            continue;
-        }
+        todos[i].description = malloc(strlen(temp_description) + 1);
+        strcpy(todos[i].description, temp_description);
 
-
-            if (!PastDeadline(deadline))
-            {
-                fprintf(fopen_out,"|%d| (%d) Header: %s || Description: %s || Deadline: %s\n", id_left, idx, header, description, deadline);
-            }else
-            {
-                fprintf(fclosed_out, "|%d| (%d) Header: %s || Description: %s || Deadline: %s\n", id_left, idx, header, description, deadline);
-            }
-
+        todos[i].id = temp_id;
+        i++;
     }
-    fclose(f);
-    fclose(fopen_out);
-    fclose(fclosed_out);
-   printf("Open entries saved in \"open.txt\", expiered ones in \"closed.txt\". \n");
+    fclose(saves);
+    return i;
+
+
 }
+
+void listTODOS()
+{
+    int anzahl = readTODOS();
+    readTODOS();
+    for (int j = 0; j < anzahl; j++)
+    {
+        printf("(%d) %s - %s\n", todos[j].id, todos[j].header, todos[j].description);
+    }
+}
+
+void pushTODOS()
+{
+    char temp_header[100];
+    char temp_description[100];
+    int temp_id = readTODOS() + 1;
+    printf("Header: ");
+    scanf("%s", temp_header);
+    printf("Description: ");
+    scanf(" %[^\n]", temp_description);
+
+    for (int i = 0; i < strlen(temp_description); i++)
+    {
+        if (temp_description[i] == ' ')temp_description[i] = '-';
+    }
+    char *description = malloc(strlen(temp_description) + 1);
+    strcpy(description, temp_description);
+
+
+    FILE *saves = fopen("../saves.txt","a");
+    if (saves == NULL)perror("Problems opening saves.txt in struct.c/pushTODOS please contact devs");
+
+
+
+    fprintf(saves, "%s %s %d", temp_header, description, temp_id);
+fclose(saves);
+
+}
+
+void deleteTODOS(){}
