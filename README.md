@@ -6,6 +6,7 @@
 - search for task with it's id
 
 ## In Developement:
+- delete tasks using its id or name
 - set the status of a task to open or closed (with it's individual id)
 - choose a editor for each task (maybe with email notification)
 
@@ -23,3 +24,5 @@ New Feature: You can search for a task using it's id:
 ---
 
 💡 Feedback and suggestions for improvements are always welcome!
+
+contact us: todo.plusplus.feedback@gmail.com
