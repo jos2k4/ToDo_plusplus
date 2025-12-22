@@ -14,8 +14,7 @@
 
 Watch our progress so far:
 
-
-![progress so far]https://github.com/user-attachments/assets/ab35b56a-b56a-4c24-8fba-94b5e6b7ad3b
+https://github.com/user-attachments/assets/ab35b56a-b56a-4c24-8fba-94b5e6b7ad3b
 
 
 
