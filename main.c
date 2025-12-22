@@ -1,7 +1,6 @@
 #include "struct.h"
 #include <stdio.h>
 
-
 int user_input(int i)
 {
   switch(i) {
@@ -45,7 +44,7 @@ int user_input(int i)
 
 
   default:
-    printf("ERROR");
+    perror("Error in user input");
   }
 
 }

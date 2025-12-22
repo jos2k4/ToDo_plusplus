@@ -101,7 +101,7 @@ void deleteTODOS(int id_to_delete)
     {
         todos[j].header = todos[j+1].header;
         todos[j].description = todos[j+1].description;
-        todos[j].id = todos[j-1].id;
+        //todos[j].id = todos[j].id;
 
     }
 
