@@ -25,7 +25,9 @@ deleteTODOS(): Organisiert das Array neu und schreibt die Datei sauber neu ("w" 
 
 Speicher-Sicherheit: Verwendung von strlen und Puffer-Kopien, um Überläufe zu vermeiden.
 ---
+
 https://github.com/user-attachments/assets/ab35b56a-b56a-4c24-8fba-94b5e6b7ad3b
+
 ---
 
 📂 Projektstruktur
